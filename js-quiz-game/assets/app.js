@@ -2,20 +2,25 @@ $(document).ready(function(){
 	
 	event.preventDefault();
 	// our current count, attached to the upper right hand corner of the browser
-	var $currentCount = $('#counter')
+	var $currentCount = $('#counter');
 	// our current form which will hold the question and subsequent answers loaded in the app.questions object.
 	var $currentForm = $('form');
 	// creates our first random question upon generating the game.html file
 	var firstRandomQuestion = app.questions[Math.floor(Math.random()* app.questions.length)];
-	
+	console.log(firstRandomQuestion);
 	//attaches the counter to the highscore on page
-
+	$('#counter').text(app.count);
+	
 	//attaches the first question to the form onload
 	$currentForm.prepend('<h3 class = "question"> Question: ' + firstRandomQuestion.question + '</h3>' + '<br><br>');
 
 	// appends all four answers to the corresponding question
 	var answerGenerator = function (randomQuestion){
-
+		var $possibleAnswers = $('<ul></ul>');
+		for (var i = 0; i < firstRandomQuestion.choices.length; i++) {
+			$possibleAnswers.text('<li>' + firstRandomQuestion.choices[i] + '</li>');
+		}
+		$possibleAnswers.appendTo('.choices');
 	};
 
 	//adds a random question and its corresponding answers to our currentForm
