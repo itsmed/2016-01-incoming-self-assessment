@@ -6949,3 +6949,13 @@ button.close {
   padding: 4px;
   margin: 2px;
 }
+
+.userName {
+  width: 250px;
+  height: 30px;
+  font-size: 16px;
+  color: black;
+  border-color: gray;
+  border-width: 2px;
+  border-style: outset;
+}

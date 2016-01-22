@@ -1,6 +1,18 @@
 $(document).ready(function(){
 	
 	event.preventDefault();
+
+	//on start click, take in userName and take us to game play
+	// $('#start').click(function(e) {
+	// 	e.preventDefault();
+	// 	userName = $('.userName').val();
+	// 	console.log(userName);
+	// 	window.location.href="game.html";
+	// });
+
+	$('.navbar-brand').click(function() {
+		$('.userName').val('');
+	});
 	// our current count, attached to the upper right hand corner of the browser
 	var $currentCount = $('#counter');
 	// our current form which will hold the question and subsequent answers loaded in the app.questions object.

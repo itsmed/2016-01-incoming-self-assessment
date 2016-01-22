@@ -156,7 +156,7 @@ app.countIncrementor = function(){
 
 
 app.successDisplay = function(){
-	alert("You are correct!");
+	alert("Congratulations,  you are correct!");
 };
 
 app.failureDisplay = function(){
