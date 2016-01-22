@@ -6,7 +6,7 @@ $(document).ready(function(){
 	// our current form which will hold the question and subsequent answers loaded in the app.questions object.
 	var $currentForm = $('form');
 	// creates our first random question upon generating the game.html file
-	randomQuestion = app.questions[Math.floor(Math.random()* app.questions.length)];
+	var randomQuestion = app.questions[Math.floor(Math.random()* app.questions.length)];
 	
 	//attaches the counter to the highscore on page
 	$('#counter').text(app.count);
@@ -38,7 +38,7 @@ $(document).ready(function(){
 	var QandAgenerator = function(){
 
 		//select a random question from the app.questions array
-		var newQuestion = app.questions[Math.floor(Math.random() * app.questions.length)];
+		newQuestion = app.questions[Math.floor(Math.random() * app.questions.length)];
 		console.log(newQuestion);
 		//prepend to the currentForm as was done on line 15 (for similair styling's sake)
 		$currentForm.prepend('<h3 class = "question"> Question: ' + newQuestion.question + '</h3>' + '<br><br>');
@@ -51,17 +51,18 @@ $(document).ready(function(){
 		event.preventDefault();
 		// represents whichever check box the user clicks on
 		alert($('input:checked').val());
+
+		//assign the value from input:checked to userInput
 		$userInput = $('input:checked').val();
 
-
-		if($userInput == randomQuestion.correct ){
+		if( ($userInput == randomQuestion.correct) || ($userInput == newQuestion.correct) ){
 			app.successDisplay();
 			app.countIncrementor();
 			$currentCount.empty().append(app.count);
 			$('.choices').empty().append(QandAgenerator());
 		} else {
 			app.failureDisplay();
-		}		
+		}
 	});
 
 	$('#restart').on('click', function(){
