@@ -26,6 +26,11 @@ var binarySearch = function (array, target) {
 
 	}
 
+	//if the target is smaller than the value at 0 or larger than the last value
+	if( (target < array[0]) || (target > array[array.length-1]) || (array.length === 0) ) {
+		return null;
+	}
+
 	//if value at target if greater than value at middle index
 	if (target > array[middleIndex]) {
 
@@ -46,7 +51,7 @@ var binarySearch = function (array, target) {
 	//function to recursively call
 	function find(start, end) {
 		
-		var midIndex = Math.floor(end - start /2);
+		var midIndex = Math.floor( (end + start ) /2);
 		console.log('mid', midIndex);
 		//if value at midIndex equals value at target
 		if (array[midIndex] === target) {
@@ -58,26 +63,19 @@ var binarySearch = function (array, target) {
 		//if target is greater than the value at midIndex
 		else if(target > array[midIndex]) {
 
-			console.log(array[midIndex]);
 			//assign midIndex to start, and end gets array.length-1
-			start = midIndex;
+			start = midIndex + 1;
 			end = array.length-1;
-			// return find(start, end);
-			console.log('s', start, 'e', end);
+			return find(start, end);
 		}
 
 		//if value at target is smaller than value at midIndex
 		else if(target < array[midIndex]) {
-			console.log(array[midIndex]);
+
 			//assign 0 to start and midIndex to end
 			start = 0;
 			end = midIndex;
-			// return find(start, end);
-			console.log('s', start, 'e', end);
-		}
-
-		else {
-			return null;
+			return find(start, end);
 		}
 
 
@@ -86,3 +84,4 @@ var binarySearch = function (array, target) {
 	return find(start, end);
 
 };
+
