@@ -14,12 +14,12 @@ https://vimeo.com/152612712
 
 #### Features to build:
 
-[ ] While on the game.html, have the 'Home' button in the top left corner take you back to the index.html page.
+Complete:  While on the game.html, have the 'Home' button in the top left corner take you back to the index.html page.
 
-[ ] show the count by adding the 'count' variable to the top right corner of the page
+Complete:  show the count by adding the 'count' variable to the top right corner of the page
 
-[ ] answerGenerator: this feature generates the answers to their corresponding question.
+Complete:  answerGenerator: this feature generates the answers to their corresponding question.
 
-[ ] QandA generator: this feature generates the next question when and answers when the user gets the question correct
+Complete:  QandA generator: this feature generates the next question when and answers when the user gets the question correct
 
 [ ] EXTRA: add a feature that collects a userName from the user and personalizes the 'you are correct!' prompt when the user has a successful answer.
