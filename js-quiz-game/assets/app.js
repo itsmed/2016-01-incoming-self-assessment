@@ -6,23 +6,30 @@ $(document).ready(function(){
 	// our current form which will hold the question and subsequent answers loaded in the app.questions object.
 	var $currentForm = $('form');
 	// creates our first random question upon generating the game.html file
-	var firstRandomQuestion = app.questions[Math.floor(Math.random()* app.questions.length)];
+	randomQuestion = app.questions[Math.floor(Math.random()* app.questions.length)];
 	
 	//attaches the counter to the highscore on page
 	$('#counter').text(app.count);
 
 	//attaches the first question to the form onload
-	$currentForm.prepend('<h3 class = "question"> Question: ' + firstRandomQuestion.question + '</h3>' + '<br><br>');
+	$currentForm.prepend('<h3 class = "question"> Question: ' + randomQuestion.question + '</h3>' + '<br><br>');
 
 	// appends all four answers to the corresponding question
 	var answerGenerator = function (randomQuestion){
 
+		//assign the randomQuestion to a variable
 		var that = randomQuestion;
+
+
 		console.log(that.correct);
+		
+		//loop through the answer choices
 		for (var i = 0; i < that.choices.length; i++) {
 		
-		var $answer = $('<div class"answer"><input type="radio" name="user_answer">'+ '&nbsp &nbsp' + that.choices[i]+'</input></div>');
+		//assign the answers to a variable inseide of a div
+		var $answer = $('<div class"answer"><input type="radio" name="user_answer" value="' + that.choices[i] +'">'+ '&nbsp &nbsp' + that.choices[i]+'</input></div>');
 
+			//append each answer to the currentForm
 			$currentForm.append($answer);
 		}
 	};
@@ -30,15 +37,24 @@ $(document).ready(function(){
 	//adds a random question and its corresponding answers to our currentForm
 	var QandAgenerator = function(){
 
+		//select a random question from the app.questions array
+		var newQuestion = app.questions[Math.floor(Math.random() * app.questions.length)];
+		console.log(newQuestion);
+		//prepend to the currentForm as was done on line 15 (for similair styling's sake)
+		$currentForm.prepend('<h3 class = "question"> Question: ' + newQuestion.question + '</h3>' + '<br><br>');
+		//call answerGenerator, with the randomly selected question as the argument
+		answerGenerator(newQuestion);
 	};
 
 	// checks the answer when the user clicks "Am I right?"
 	$('#checkAnswer').on('click',function(){
 		event.preventDefault();
 		// represents whichever check box the user clicks on
-		$userInput = $('user_answer');
+		alert($('input:checked').val());
+		$userInput = $('input:checked').val();
 
-		if(app.randomQuestion.choices[$userInput.val()] === app.randomQuestion.correct ){
+
+		if($userInput == randomQuestion.correct ){
 			app.successDisplay();
 			app.countIncrementor();
 			$currentCount.empty().append(app.count);
@@ -52,6 +68,6 @@ $(document).ready(function(){
 		location.reload();
 	});
 
-	answerGenerator(firstRandomQuestion);
+	answerGenerator(randomQuestion);
 });
 
