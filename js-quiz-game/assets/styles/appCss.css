@@ -6944,3 +6944,8 @@ button.close {
 .panel-info .panel-title {
   color: #fff;
 }
+
+.answer {
+  padding: 4px;
+  margin: 2px;
+}
